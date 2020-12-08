@@ -10,7 +10,7 @@
 #define ADC_H_
 
 
-void ADC_init(void);
+//void ADC_init(void);
 
 
 #endif /* ADC_H_ */
