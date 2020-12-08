@@ -23,6 +23,25 @@ void PWM_Init(void)
 	DDRE |= (1<<PE4) | (1<<PE5) | (1<<PE3);
 }
 
+void ADC_init(void)
+{
+	ADMUX = (1 << REFS0);	// 5V supply used for ADC reference, select ADC channel 0, datasheet 28.9.1
+	DIDR0 = (1 << ADC0D);	// disable digital input on ADC0 pin, datasheet 28.9.6
+	// enable ADC, start ADC, Enable Interrupt, ADC clock = 16MHz / 128 = 125kHz, datasheet 28.9.2
+	ADCSRA = (1<<ADEN) | (1<<ADSC) | (1<<ADATE) | (1<<ADIE) | (1<<ADPS2) | (1<<ADPS1) | (1<<ADPS0);
+	sei();
+}
+
+void Timer_init(void)
+{
+	TCCR1B |= (1<<WGM12);				// Mode 4, CTC = WGM10 - WGM13 = 0100, Table 20-6 (page 176)
+	TIMSK1 |= (1<<OCIE1A);				// Timer/Counter1, Output Compare A Match Interrupt Enable, 20.15.8 (page 184)
+	OCR1A = 62499;	// OCR1A = (Tdelay * F_CPU / N) - 1 => 61.5 gives 1ms => 62499 gives 1s
+	TCCR1B |= (1<<CS12); //| (1<<CS10));				// Prescaler: 256, CS=100, Table 20-7 (page 177). Timer starts!
+	sei();
+	
+}
+
 void init(void)
 {
 	PWM_Init();

@@ -29,15 +29,15 @@
     <ExternalProgrammingToolCommand />
     <AsfFrameworkConfig>
       <framework-data>
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.42.0" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.42.0" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
     <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
     <avrtoolserialnumber>J41800117931</avrtoolserialnumber>
@@ -158,12 +158,6 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ADC\ADC.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="ADC\ADC.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Init\init.c">
       <SubType>compile</SubType>
     </Compile>
@@ -185,17 +179,16 @@
     <Compile Include="setup\stdio_setup.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Timer\Timer.c">
+    <Compile Include="Temp\temp.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Timer\TImer.h">
+    <Compile Include="Temp\temp.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ADC" />
     <Folder Include="Init" />
-    <Folder Include="Timer" />
+    <Folder Include="Temp" />
     <Folder Include="setup" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
