@@ -17,11 +17,12 @@ void StartOrStopMotor(float TempC)
 	{
 		OCR3A = 0;
 	}
-
+	
 }
 
 void ReadTemp(int GetADC)
 {
+	ADCSRA &= ~(1<<ADATE);
 	float ADC_voltage;
 	double temp;
 	double tempK;
