@@ -16,12 +16,15 @@
 #include "SwitchADMUX/SwitchADMUX.h"
 //Denne variabel bruger vi til at switche på nede i ISR(ADC_vetc)
 int MUXSwitch;
+int printfY;
+int printfX;
 
 ISR(ADC_vect)
 {
 	ADCSRA &= ~(1<<ADATE) & ~(1<<ADSC);
 	unsigned int ADC_data;
 	unsigned int ADCTILY;
+	unsigned int ADCTILX;
 		switch (MUXSwitch)
 		{
 			case 1:
@@ -31,10 +34,15 @@ ISR(ADC_vect)
 			break;
 			case 2:
 			ADCTILY = ADC;
+			printfY = ADC;
 			//printf("Case2 i ISR %d\n", MUXSwitch);
 			ReadY(ADCTILY);
 			break;
-			
+			case 3:
+			ADCTILX = ADC;
+			printfX = ADC;
+			ReadX(ADCTILX);
+			break;
 			default:
 			break;
 		}
@@ -44,8 +52,10 @@ ISR(ADC_vect)
 
 ISR(TIMER1_COMPA_vect)
 {
-	
-	
+	printf("%d -y\n", printfY);
+	printf("%d -x\n", printfX);
+	printf("---------------------------\n");
+		
 }
 
 int main(void)
@@ -55,7 +65,7 @@ int main(void)
 	init();
 	while (1)
 	{	
-		switchMux(MUXSwitch);	
+		switchMux(MUXSwitch);
 	}
 }
 

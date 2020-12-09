@@ -7,6 +7,7 @@
 #define F_CPU 16E6
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/delay.h>
 
 extern int MUXSwitch;
 
@@ -18,15 +19,25 @@ void switchMux()
 		//printf("Case1 i Switch: %d\n", MUXSwitch);	
 		ADMUX &= ~(1<<MUX0);
 		ADCSRA |= (1<<ADATE) | (1<<ADSC);
+		_delay_ms(50);
 		MUXSwitch ++;
 		break;
 		case 2:
 		//printf("Case2 i Switch: %d\n", MUXSwitch);
 		ADMUX |= (1<<MUX0);
 		ADCSRA |= (1<<ADATE) | (1<<ADSC);
+		_delay_ms(50);
 		MUXSwitch ++;
-		break;		
+		break;	
+		case 3:
+		ADMUX &= ~(1<<MUX0);
+		ADMUX |= (1<<MUX1);
+		ADCSRA |= (1<<ADATE) | (1<<ADSC);
+		_delay_ms(50);
+		MUXSwitch ++;		
+		break;	
 		default:
+		ADMUX &= ~(1<<MUX1);		
 		MUXSwitch = 1;
 		break;
 	}

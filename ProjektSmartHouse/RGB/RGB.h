@@ -12,6 +12,7 @@
 
 extern int MUXSwitch;
 void ReadY(int YADC);
+void ReadX(int XADC);
 
 
 #endif /* RGB_H_ */

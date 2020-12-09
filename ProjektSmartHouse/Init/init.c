@@ -27,7 +27,7 @@ void PWM_Init(void)
 void ADC_init(void)
 {
 	ADMUX = (1 << REFS0);	// 5V supply used for ADC reference, select ADC channel 0, datasheet 28.9.1
-	DIDR0 = (1 << ADC0D);	// disable digital input on ADC0 pin, datasheet 28.9.6
+	DIDR0 = (1 << ADC0D) | (1 << ADC1D);	// disable digital input on ADC0 pin, datasheet 28.9.6
 	// enable ADC, ADC clock = 16MHz / 128 = 125kHz, datasheet 28.9.2
 	ADCSRA = (1<<ADEN) | (1<<ADIE) | (1<<ADPS2) | (1<<ADPS1) | (1<<ADPS0);
 	sei();
@@ -42,10 +42,15 @@ void Timer_init(void)
 	sei();
 	
 }
+void RGB_init(void)
+{
+	DDRB |= (1 << PB7) | (1 << PB6) | (1 << PB5); 
+}
 
 void init(void)
 {
 	PWM_Init();
 	ADC_init();
 	Timer_init();
+	RGB_init();
 }

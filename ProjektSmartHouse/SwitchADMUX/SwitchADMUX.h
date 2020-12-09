@@ -12,5 +12,4 @@
 extern int MUXSwitch;
 void switchMux();
 
-
 #endif /* SWITCHADMUX_H_ */
