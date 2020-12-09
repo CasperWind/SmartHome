@@ -1772,7 +1772,7 @@ void ReadTemp(int GetADC)
      bb2:	cd bf       	out	0x3d, r28	; 61
      bb4:	9c 8b       	std	Y+20, r25	; 0x14
      bb6:	8b 8b       	std	Y+19, r24	; 0x13
-	//ADCSRA &= ~(1<<ADATE);
+	//OCR1C = GetADC / 4;
 	float ADC_voltage;
 	double temp;
 	double tempK;
