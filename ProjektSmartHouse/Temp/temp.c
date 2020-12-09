@@ -4,8 +4,11 @@
  * Created: 08/12/2020 10.54.19
  *  Author: Wind
  */ 
+#define F_CPU 16E6
 #include <avr/io.h>
 #include <avr/interrupt.h>
+
+extern int MUXSwitch;
 
 void StartOrStopMotor(float TempC)
 {
@@ -22,7 +25,7 @@ void StartOrStopMotor(float TempC)
 
 void ReadTemp(int GetADC)
 {
-	ADCSRA &= ~(1<<ADATE);
+	//ADCSRA &= ~(1<<ADATE);
 	float ADC_voltage;
 	double temp;
 	double tempK;

@@ -9,7 +9,7 @@
 #ifndef TEMP_H_
 #define TEMP_H_
 
-
+extern int MUXSwitch;
 void ReadTemp(int GetADC);
 
 

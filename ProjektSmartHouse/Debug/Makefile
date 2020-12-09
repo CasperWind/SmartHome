@@ -34,6 +34,8 @@ LINKER_SCRIPT_DEP:=
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
 ../Init \
+../SwitchADMUX \
+../RGB \
 ../Temp \
 ../setup
 
@@ -43,7 +45,9 @@ C_SRCS +=  \
 ../Init/init.c \
 ../lcd.c \
 ../main.c \
+../RGB/RBG.c \
 ../setup/stdio_setup.c \
+../SwitchADMUX/SwitchADMUX.c \
 ../Temp/temp.c
 
 
@@ -57,28 +61,36 @@ OBJS +=  \
 Init/init.o \
 lcd.o \
 main.o \
+RGB/RBG.o \
 setup/stdio_setup.o \
+SwitchADMUX/SwitchADMUX.o \
 Temp/temp.o
 
 OBJS_AS_ARGS +=  \
 Init/init.o \
 lcd.o \
 main.o \
+RGB/RBG.o \
 setup/stdio_setup.o \
+SwitchADMUX/SwitchADMUX.o \
 Temp/temp.o
 
 C_DEPS +=  \
 Init/init.d \
 lcd.d \
 main.d \
+RGB/RBG.d \
 setup/stdio_setup.d \
+SwitchADMUX/SwitchADMUX.d \
 Temp/temp.d
 
 C_DEPS_AS_ARGS +=  \
 Init/init.d \
 lcd.d \
 main.d \
+RGB/RBG.d \
 setup/stdio_setup.d \
+SwitchADMUX/SwitchADMUX.d \
 Temp/temp.d
 
 OUTPUT_FILE_PATH +=ProjektSmartHouse.elf
@@ -116,7 +128,21 @@ Init/init.o: ../Init/init.c
 	@echo Finished building: $<
 	
 
+RGB/RBG.o: ../RGB/RBG.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\include" -I"../setup" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 setup/stdio_setup.o: ../setup/stdio_setup.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\include" -I"../setup" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+SwitchADMUX/SwitchADMUX.o: ../SwitchADMUX/SwitchADMUX.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\include" -I"../setup" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

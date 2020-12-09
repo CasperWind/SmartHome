@@ -8,7 +8,11 @@ lcd.c
 
 main.c
 
+RGB\RBG.c
+
 setup\stdio_setup.c
+
+SwitchADMUX\SwitchADMUX.c
 
 Temp\temp.c
 

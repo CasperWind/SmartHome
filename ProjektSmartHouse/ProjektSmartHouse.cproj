@@ -172,10 +172,22 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="RGB\RBG.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RGB\RGB.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="setup\stdio_setup.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="setup\stdio_setup.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SwitchADMUX\SwitchADMUX.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SwitchADMUX\SwitchADMUX.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Temp\temp.c">
@@ -187,6 +199,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Init" />
+    <Folder Include="SwitchADMUX" />
+    <Folder Include="RGB" />
     <Folder Include="Temp" />
     <Folder Include="setup" />
   </ItemGroup>
