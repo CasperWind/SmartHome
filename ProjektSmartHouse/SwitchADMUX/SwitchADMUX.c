@@ -15,30 +15,27 @@ void switchMux()
 {
 	switch (MUXSwitch)
 	{
-		case 1:	
-		//printf("Case1 i Switch: %d\n", MUXSwitch);	
-		ADMUX &= ~(1<<MUX0);
-		ADCSRA |= (1<<ADATE) | (1<<ADSC);
-		_delay_ms(50);
-		MUXSwitch ++;
+		case 1:		
+		ADMUX &= ~(1<<MUX0);		
+		_delay_ms(500);	
+		sei();
 		break;
 		case 2:
-		//printf("Case2 i Switch: %d\n", MUXSwitch);
 		ADMUX |= (1<<MUX0);
-		ADCSRA |= (1<<ADATE) | (1<<ADSC);
-		_delay_ms(50);
-		MUXSwitch ++;
+		_delay_ms(500);
+		sei();
 		break;	
 		case 3:
 		ADMUX &= ~(1<<MUX0);
-		ADMUX |= (1<<MUX1);
-		ADCSRA |= (1<<ADATE) | (1<<ADSC);
-		_delay_ms(50);
-		MUXSwitch ++;		
+		ADMUX |= (1<<MUX1);		
+		_delay_ms(500);
+		sei();
 		break;	
-		default:
-		ADMUX &= ~(1<<MUX1);		
+		default:				
 		MUXSwitch = 1;
+		ADMUX &= ~(1<<MUX0);
+		_delay_ms(500);
+		sei();
 		break;
 	}
 }

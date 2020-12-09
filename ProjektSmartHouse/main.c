@@ -21,7 +21,8 @@ int printfX;
 
 ISR(ADC_vect)
 {
-	ADCSRA &= ~(1<<ADATE) & ~(1<<ADSC);
+	cli();
+	//ADCSRA &= ~(1<<ADATE) & ~(1<<ADSC);
 	unsigned int ADC_data;
 	unsigned int ADCTILY;
 	unsigned int ADCTILX;
@@ -29,32 +30,33 @@ ISR(ADC_vect)
 		{
 			case 1:
 			ADC_data = ADC;
-			//printf("Case1 i ISR %d \n", MUXSwitch);
 			ReadTemp(ADC_data);
+			MUXSwitch = 2;
 			break;
 			case 2:
 			ADCTILY = ADC;
 			printfY = ADC;
-			//printf("Case2 i ISR %d\n", MUXSwitch);
 			ReadY(ADCTILY);
+			MUXSwitch = 3;
 			break;
 			case 3:
 			ADCTILX = ADC;
 			printfX = ADC;
 			ReadX(ADCTILX);
+			MUXSwitch ++;
 			break;
 			default:
 			break;
 		}
 	
-	
+	switchMux(MUXSwitch);
 }
 
 ISR(TIMER1_COMPA_vect)
 {
-	printf("%d -y\n", printfY);
-	printf("%d -x\n", printfX);
-	printf("---------------------------\n");
+	//printf("%d -y\n", printfY);
+	//printf("%d -x\n", printfX);
+	//printf("---------------------------\n");
 		
 }
 
@@ -63,9 +65,10 @@ int main(void)
 	UartInit();
 	
 	init();
+	MUXSwitch = 0;
+	switchMux(MUXSwitch);
 	while (1)
-	{	
-		switchMux(MUXSwitch);
+	{			
 	}
 }
 

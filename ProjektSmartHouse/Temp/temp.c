@@ -12,11 +12,12 @@ extern int MUXSwitch;
 
 void StartOrStopMotor(float TempC)
 {
-	if (TempC > 25)
+	printf("%f \n", TempC);
+	if (TempC > 30)
 	{
 		OCR3A = 255;
 	}
-	if (TempC < 23)
+	if (TempC < 25)
 	{
 		OCR3A = 0;
 	}
