@@ -22,7 +22,6 @@ int printfX;
 ISR(ADC_vect)
 {
 	cli();
-	//ADCSRA &= ~(1<<ADATE) & ~(1<<ADSC);
 	unsigned int ADC_data;
 	unsigned int ADCTILY;
 	unsigned int ADCTILX;
@@ -35,13 +34,11 @@ ISR(ADC_vect)
 			break;
 			case 2:
 			ADCTILY = ADC;
-			printfY = ADC;
 			ReadY(ADCTILY);
 			MUXSwitch = 3;
 			break;
 			case 3:
 			ADCTILX = ADC;
-			printfX = ADC;
 			ReadX(ADCTILX);
 			MUXSwitch ++;
 			break;

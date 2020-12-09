@@ -13,11 +13,14 @@ extern int MUXSwitch;
 void ReadY(int YADC)
 {
 	printf("%d -y\n", YADC);
+	OCR1C = YADC / 4;
+	OCR1B = YADC / 4;
 		
 }
 
 void ReadX(int XADC)
 {
 	printf("%d -x\n", XADC);
+	OCR1A = XADC / 4 ;
 	
 }
