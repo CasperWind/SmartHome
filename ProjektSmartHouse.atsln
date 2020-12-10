@@ -7,8 +7,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ProjektSmartHouse", "Projek
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1BE070F1-B1F2-421B-9580-8CFFA67507E7}"
 	ProjectSection(SolutionItems) = preProject
-		ProjektSmartHome\Hipo.png = ProjektSmartHome\Hipo.png
-		ProjektSmartHome\README.md = ProjektSmartHome\README.md
+		Hipo.png = Hipo.png
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global

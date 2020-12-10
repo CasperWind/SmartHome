@@ -33,20 +33,18 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
-../ADC \
 ../Init \
-../Timer \
+../Temp \
 ../setup
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../ADC/ADC.c \
 ../Init/init.c \
 ../lcd.c \
 ../main.c \
 ../setup/stdio_setup.c \
-../Timer/Timer.c
+../Temp/temp.c
 
 
 PREPROCESSING_SRCS += 
@@ -56,36 +54,32 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-ADC/ADC.o \
 Init/init.o \
 lcd.o \
 main.o \
 setup/stdio_setup.o \
-Timer/Timer.o
+Temp/temp.o
 
 OBJS_AS_ARGS +=  \
-ADC/ADC.o \
 Init/init.o \
 lcd.o \
 main.o \
 setup/stdio_setup.o \
-Timer/Timer.o
+Temp/temp.o
 
 C_DEPS +=  \
-ADC/ADC.d \
 Init/init.d \
 lcd.d \
 main.d \
 setup/stdio_setup.d \
-Timer/Timer.d
+Temp/temp.d
 
 C_DEPS_AS_ARGS +=  \
-ADC/ADC.d \
 Init/init.d \
 lcd.d \
 main.d \
 setup/stdio_setup.d \
-Timer/Timer.d
+Temp/temp.d
 
 OUTPUT_FILE_PATH +=ProjektSmartHouse.elf
 
@@ -101,13 +95,6 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-ADC/ADC.o: ../ADC/ADC.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\include" -I"../setup" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
 Init/init.o: ../Init/init.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -136,7 +123,7 @@ setup/stdio_setup.o: ../setup/stdio_setup.c
 	@echo Finished building: $<
 	
 
-Timer/Timer.o: ../Timer/Timer.c
+Temp/temp.o: ../Temp/temp.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\include" -I"../setup" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
