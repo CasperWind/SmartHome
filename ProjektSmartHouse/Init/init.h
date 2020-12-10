@@ -10,7 +10,8 @@
 #define INIT_H_
 
 void init(void);
-
-
+void Timer_init(void);
+void ADC_init(void);
+void PWM_Init(void);
 
 #endif /* INIT_H_ */
