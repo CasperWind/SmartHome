@@ -8,11 +8,11 @@ I dette projekt skal jeg lave IOT til mit hus.
 <li>Kodelås til vinkælderen❌</li>
 </ul>
 
-#HIPO diagram.
+# HIPO diagram.
 ![HIPO](Hipo.png)
 
 
-#Tempratur måler til soveværlset
+# Tempratur måler til soveværlset
 
 
 Den måler tempratueren og starter en fane sår tempratueren kommer over 25 grader.
@@ -20,8 +20,19 @@ Og stopper igen når den kommer under 23 grader.
 
 Hvis du ønsker at lave om på hvornår den begynder og stopper så skal det laves om i koden, Fil temp.c
 
+```
+if (TempC > 25) // tjekker om tempraturen er over 25 grader. og starter motoren hvis det er over.
+	{
+		OCR3A = 255;
+	}
+	if (TempC < 23) // tjekker om tempraturen er under 23 grader og slukker for motoren hvis det er under.
+	{
+		OCR3A = 0;
+	}
+```
+Den skal lave nogen beregninger for at finde ud af hvad tempraturen er. Den modtaer en ADC fra ``` ISR(ADC_VECT) ``` 
 
-###Opsætning ef tempratur måler og motor.
+### Opsætning ef tempratur måler og motor.
 
 motoren skal sættes op sådan her.
 
@@ -41,7 +52,7 @@ Ben 15 til selve ardrorino bordet i dette projekt skal den hen til pin 5.
 
 Ben 9 til 5v.
 
-###Opsætning af termometer.
+### Opsætning af termometer.
 
 termometeret skal sættes op sådan her.
 
