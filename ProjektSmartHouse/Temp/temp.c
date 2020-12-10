@@ -13,11 +13,11 @@ extern int MUXSwitch;
 void StartOrStopMotor(float TempC)
 {
 	printf("%f \n", TempC);
-	if (TempC > 30)
+	if (TempC > 25) // tjekker om tempraturen er over 25 grader. og starter motoren hvis det er over.
 	{
 		OCR3A = 255;
 	}
-	if (TempC < 25)
+	if (TempC < 23) // tjekker om tempraturen er under 23 grader og slukker for motoren hvis det er under.
 	{
 		OCR3A = 0;
 	}
