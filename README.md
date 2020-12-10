@@ -8,8 +8,20 @@ I dette projekt skal jeg lave IOT til mit hus.
 <li>Kodelås til vinkælderen❌</li>
 </ul>
 
-# HIPO diagram.
+# Indhold
+
+
+- [ProjektSmartHome](#projektsmarthome)
+- [Indhold](#indhold)
+- [HIPO](#hipo)
+- [Tempratur måler til soveværlset](#tempratur-måler-til-soveværlset)
+    - [Opsætning ef tempratur måler og motor.](#opsætning-ef-tempratur-måler-og-motor)
+    - [Opsætning af termometer.](#opsætning-af-termometer)
+
+
+# HIPO
 ![HIPO](Hipo.png)
+
 
 
 # Tempratur måler til soveværlset
@@ -30,7 +42,14 @@ if (TempC > 25) // tjekker om tempraturen er over 25 grader. og starter motoren 
 		OCR3A = 0;
 	}
 ```
-Den skal lave nogen beregninger for at finde ud af hvad tempraturen er. Den modtaer en ADC fra ``` ISR(ADC_VECT) ``` 
+Den skal lave nogen beregninger for at finde ud af hvad tempraturen er. Den modtaer en ```ADC``` fra ``` ISR(ADC_VECT) ``` som den omregner med føglene regne stykke:
+```
+    ADC_voltage = 5.0 * ADC_data / 1024.0;
+	temp = log(10000.0 * (1024.0 / ADC_data -1));
+	tempK = 1/(0.001129148+(0.000234125+(0.0000000876741*temp*temp))*temp);
+	tempC = tempK - 273.15; 
+```
+til sidst bliver ```tempC``` snedt til ```StartOrStopMotor(float TempC)``` som ser på ```tempC``` og hvis ```tempC``` er over 25 grader så starter motoren. Og hvis der er under 23 grader så stopper motoren.
 
 ### Opsætning ef tempratur måler og motor.
 
