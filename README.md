@@ -27,7 +27,7 @@ I dette projekt skal jeg lave IOT til mit hus.
 # Tempratur måler til soveværlset
 
 
-Den måler tempratueren og starter en fane sår tempratueren kommer over 25 grader.
+Den måler tempratueren og starter en fane når tempratueren kommer over 25 grader.
 Og stopper igen når den kommer under 23 grader.
 
 Hvis du ønsker at lave om på hvornår den begynder og stopper så skal det laves om i koden, Fil temp.c
