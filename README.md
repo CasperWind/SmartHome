@@ -30,8 +30,28 @@ I dette projekt skal jeg lave IOT til mit hus.
 
 # switchMux
 
+Denne funktion bliver kaldt første gang i ```Main(void)```\
+og der efter inde i ```ISR(ADC_vect)```\
+Da denne funktion er den som skifter på hvilken port der bliver læst på. I dette projekt læser vi på 3 porte AD0, AD1 og AD2.
+
+inde i Switch chasen skifter vi bit mønster på MUX'en så den skifter port.
+og der efter starter vi for ```ISR(ADC_vect)``` med ```sei()```
+
+```
+case 1:
+		ADMUX &= 0xF8;				//clear analog channel
+		ADMUX &= ~(1<<MUX0);		//setter ny analog channel
+		_delay_ms(50);	
+		sei();
+		break;
+```
+
+
 # Interrupt ISR(ADC_vect)
 
+Her inde i denne Interrupt læser vi ADC'en og sender verdien over til den funktion som passer til casen. Når der er kørt en case så opdater vi en global variabel som hedder ```MUXSwitch``` Som holder styr på hvor langt vi er i hele programmet. Da den er global styre den også casen inde i ```switchMux```.
+Helt til sidst så kalder vi ```switchMux``` og det hele begynder igen.
+ 
 # Tempratur måler til soveværlset
 
 
