@@ -17,11 +17,12 @@ I dette projekt skal jeg lave IOT til mit hus.
 - [switchMux](#switchmux)
 - [Interrupt ISR(ADC_vect)](#interrupt-isradc_vect)
 - [Tempratur måler til soveværlset](#tempratur-måler-til-soveværlset)
-    - [Opsætning ef tempratur måler og motor.](#opsætning-ef-tempratur-måler-og-motor)
-    - [Opsætning af termometer.](#opsætning-af-termometer)
+		- [Opsætning ef tempratur måler og motor.](#opsætning-ef-tempratur-måler-og-motor)
+		- [Opsætning af termometer.](#opsætning-af-termometer)
 - [RGB lys til børneværlset](#rgb-lys-til-børneværlset)
-    - [opsærning af joystik.](#opsærning-af-joystik)
-    - [opsætning af RGB pære](#opsætning-af-rgb-pære)
+		- [opsærning af joystik.](#opsærning-af-joystik)
+		- [opsætning af RGB pære](#opsætning-af-rgb-pære)
+- [Libraries](#libraries)
 
 
 # HIPO
@@ -142,3 +143,8 @@ Her er et billede af min opsætning
 
 ![RGBLive](RGBLive.png)
 
+# Libraries
+
+- <avr/io.h>
+- <avr/interrupt.h>
+- <util/delay.h>
